@@ -25,7 +25,7 @@ Material:
     - _GridSize: 1
     - _GridStrength: 0.3
     - _GridThickness: 0.03
-    - _GridToggle: 1
+    - _GridToggle: 0
     m_Colors:
     - _Color: {r: 0, g: 0.70980394, b: 1, a: 0.2}
   m_BuildTextureStacks: []
