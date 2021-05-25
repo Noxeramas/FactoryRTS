@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2462899394571218490}
   - component: {fileID: 3891564565967193282}
   - component: {fileID: 8923690864376815665}
+  - component: {fileID: 5035249267819924359}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -26,11 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2250803694113838718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-
-
-  m_LocalPosition: {x: 30.97, y: 3, z: -25.786718}
-
-
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,3 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5035249267819924359
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250803694113838718}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

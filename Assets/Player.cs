@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
 {
     public LayerMask whatCanBeClickedOn;
     private NavMeshAgent myAgent;
-
     void Start()
     {
+       
         myAgent = GetComponent <NavMeshAgent> ();
     }
     void Update ()
