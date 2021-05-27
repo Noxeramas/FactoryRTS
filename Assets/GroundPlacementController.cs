@@ -6,6 +6,8 @@ public class GroundPlacementController : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] placeableObjectPrefabs;
+	[SerializeField]
+	private GameObject[] TranparentPrefabs;
 
     private GameObject currentPlaceableObject;
 
@@ -42,10 +44,9 @@ public class GroundPlacementController : MonoBehaviour
                         Destroy(currentPlaceableObject);
                     }
 
-                    currentPlaceableObject = Instantiate(placeableObjectPrefabs[i]);
+                    currentPlaceableObject = Instantiate(TranparentPrefabs[i]);
                     currentPrefabIndex = i;
                 }
-
                 break;
             }
         }
@@ -79,7 +80,10 @@ public class GroundPlacementController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            currentPlaceableObject = null;
+			Destroy(currentPlaceableObject);
+            currentPlaceableObject = Instantiate(placeableObjectPrefabs[currentPrefabIndex]);
+			MoveCurrentObjectToMouse();
+			currentPlaceableObject = null;
         }
     }
 }
