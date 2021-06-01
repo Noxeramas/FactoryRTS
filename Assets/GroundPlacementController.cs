@@ -8,11 +8,15 @@ public class GroundPlacementController : MonoBehaviour
     private GameObject[] placeableObjectPrefabs;
 	[SerializeField]
 	private GameObject[] TranparentPrefabs;
+	[SerializeField]
+	private GameObject[] InvalidPrefabs;
 
     private GameObject currentPlaceableObject;
 
     private float mouseWheelRotation;
     private int currentPrefabIndex = -1;
+	private int _collisions = 0;
+
 
     private void Update()
     {
@@ -26,6 +30,25 @@ public class GroundPlacementController : MonoBehaviour
         }
     }
 
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Terrain") 
+		{
+			return;
+		}
+		//Debug.Log("Hello");
+		_collisions++;
+	}
+	
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.tag == "Terrain") 
+		{
+			return;
+		}
+		_collisions--;
+	}
+	
     private void HandleNewObjectHotkey()
     {
         for (int i = 0; i < placeableObjectPrefabs.Length; i++)
@@ -43,9 +66,16 @@ public class GroundPlacementController : MonoBehaviour
                     {
                         Destroy(currentPlaceableObject);
                     }
-
-                    currentPlaceableObject = Instantiate(TranparentPrefabs[i]);
-                    currentPrefabIndex = i;
+					if (isValidPlacement())
+					{
+						currentPlaceableObject = Instantiate(TranparentPrefabs[i]);
+						currentPrefabIndex = i;
+					}
+					else
+					{
+						currentPlaceableObject = Instantiate(InvalidPrefabs[i]);
+						currentPrefabIndex = i;
+					}
                 }
                 break;
             }
@@ -86,4 +116,9 @@ public class GroundPlacementController : MonoBehaviour
 			currentPlaceableObject = null;
         }
     }
+	
+	public bool isValidPlacement()
+	{
+		return _collisions == 0;
+	}
 }

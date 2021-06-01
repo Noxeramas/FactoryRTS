@@ -59,7 +59,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 64d25ae347abc1e488f7154160bcafe1, type: 2}
+    - target: {fileID: 8410152421470118480, guid: 7b403e0cb6a27374383b599dff7f3689, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8330805898497718449, guid: 7b403e0cb6a27374383b599dff7f3689, type: 3}
-    - {fileID: 8410152421470118480, guid: 7b403e0cb6a27374383b599dff7f3689, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b403e0cb6a27374383b599dff7f3689, type: 3}
