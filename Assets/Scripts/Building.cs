@@ -94,7 +94,7 @@ public class Building
         
         _placement = BuildingPlacement.FIXED;
         SetMaterials();
-        _transform.GetComponent<BoxCollider>().isTrigger = false;
+        //_transform.GetComponent<BoxCollider>().isTrigger = false;
     }
 
     public void CheckValidPlacement()

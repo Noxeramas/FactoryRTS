@@ -7,7 +7,7 @@ public class BuildingManager : MonoBehaviour
 
     private BoxCollider _collider;
     private Building _building = null;
-    private int _nCollisions = 0;
+    private int _nCollisions = -1;
 
     public void Initialize(Building building)
     {
@@ -67,7 +67,7 @@ public class BuildingManager : MonoBehaviour
                 invalidCornersCount++;
         }
 
-        return invalidCornersCount > 1;
+        return invalidCornersCount < 3;
 
 
     }

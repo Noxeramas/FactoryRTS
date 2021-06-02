@@ -47,7 +47,7 @@ public class BuildingPlacer : MonoBehaviour
             }
             if(_placedBuilding.HasValidPlacement && Input.GetMouseButtonDown(0))
             {
-
+                _PlaceBuilding();
             }
         }
         
