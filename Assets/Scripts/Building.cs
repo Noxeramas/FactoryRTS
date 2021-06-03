@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 public enum BuildingPlacement
 {
     VALID,
@@ -15,6 +16,10 @@ public class Building
     private Transform _transform;
     private int _currentHealth;
     private BuildingManager _BuildingManager;
+    private NavMeshObstacle _NavMeshObstacle;
+   
+
+
 
 
     public Building(BuildingData data)
@@ -26,8 +31,10 @@ public class Building
             Resources.Load($"Prefabs/Buildings/{_data.Code}")
             ) as GameObject;
         _transform = g.transform;
+        _NavMeshObstacle = g.GetComponent<NavMeshObstacle>();
         _BuildingManager = g.GetComponent<BuildingManager>();
 
+        
         _placement = BuildingPlacement.VALID;
         _materials = new List<Material>();
         foreach (Material material in _transform.Find("Mesh").GetComponent<Renderer>().materials)
@@ -88,13 +95,18 @@ public class Building
     }
     
 
-
+    private void NMOEnable()
+    {
+        _NavMeshObstacle.enabled = true;
+    }
     public void Place()
     {
         
         _placement = BuildingPlacement.FIXED;
         SetMaterials();
-        //_transform.GetComponent<BoxCollider>().isTrigger = false;
+        NMOEnable();
+        _transform.GetComponent<NavMeshObstacle>().carving = true;
+        _transform.GetComponent<BoxCollider>().isTrigger = false;
     }
 
     public void CheckValidPlacement()

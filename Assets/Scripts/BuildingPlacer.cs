@@ -60,6 +60,7 @@ public class BuildingPlacer : MonoBehaviour
         Building building = new Building(
             Globals.BUILDING_DATA[buildingDataIndex]
             );
+        
         building.Transform.GetComponent<BuildingManager>().Initialize(building);
         _placedBuilding = building;
         _lastPlacementPosition = Vector3.zero;

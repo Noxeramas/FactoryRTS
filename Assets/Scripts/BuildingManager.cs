@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(BoxCollider))]
 public class BuildingManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class BuildingManager : MonoBehaviour
     public void Initialize(Building building)
     {
         _collider = GetComponent<BoxCollider>();
+        
+
         _building = building;
     }
 
