@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(BoxCollider))]
 public class BuildingManager : MonoBehaviour
 {
@@ -12,24 +13,20 @@ public class BuildingManager : MonoBehaviour
     public void Initialize(Building building)
     {
         _collider = GetComponent<BoxCollider>();
+        
+
         _building = building;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ground")
-		{
-			return;
-		}
+        if (other.tag == "Ground") return;
         _nCollisions++;
         CheckPlacement();
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Ground")
-		{
-			return;
-		}
+        if (other.tag == "Ground") return;
         _nCollisions--;
         CheckPlacement();
     }
@@ -47,7 +44,7 @@ public class BuildingManager : MonoBehaviour
     public bool HasValidPlacement()
     {
 
-		Debug.Log(_nCollisions);
+
         if (_nCollisions > 0) return false;
 
         Vector3 p = transform.position;
