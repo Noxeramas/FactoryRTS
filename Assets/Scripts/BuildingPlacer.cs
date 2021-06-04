@@ -37,8 +37,10 @@ public class BuildingPlacer : MonoBehaviour
                 1000f,
                 Globals.GROUND_LAYER_MASK
               ))
+          
             {
-                _placedBuilding.SetPosition(_raycastHit.point);
+                Vector3 newPosition = new Vector3(Mathf.Floor(_raycastHit.point.x / 1) * 1 + 1 / 2, _raycastHit.point.y, Mathf.Floor(_raycastHit.point.z / 1) * 1 - 1 / 2);
+                _placedBuilding.SetPosition(newPosition);
                 if(_lastPlacementPosition != _raycastHit.point)
                 {
                     _placedBuilding.CheckValidPlacement();
