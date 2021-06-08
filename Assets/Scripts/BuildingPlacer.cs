@@ -39,7 +39,7 @@ public class BuildingPlacer : MonoBehaviour
               ))
           
             {
-                Vector3 newPosition = new Vector3(Mathf.Floor(_raycastHit.point.x / 1) * 1 + 1 / 2, _raycastHit.point.y, Mathf.Floor(_raycastHit.point.z / 1) * 1 - 1 / 2);
+                Vector3 newPosition = new Vector3(Mathf.Floor(_raycastHit.point.x / 2) * 2 +  1, _raycastHit.point.y, Mathf.Floor(_raycastHit.point.z / 2) * 2  -1);
                 _placedBuilding.SetPosition(newPosition);
                 if(_lastPlacementPosition != _raycastHit.point)
                 {

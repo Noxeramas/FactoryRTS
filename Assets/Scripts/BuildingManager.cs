@@ -30,6 +30,7 @@ public class BuildingManager : MonoBehaviour
         _nCollisions--;
         CheckPlacement();
     }
+   
     public bool CheckPlacement()
     {
         if (_building == null) return false;
@@ -44,7 +45,7 @@ public class BuildingManager : MonoBehaviour
     public bool HasValidPlacement()
     {
 
-
+        
         if (_nCollisions > 0) return false;
 
         Vector3 p = transform.position;
@@ -58,8 +59,8 @@ public class BuildingManager : MonoBehaviour
             new Vector3(c.x + e.x, bottomHeight, c.z - e.z),
             new Vector3(c.x + e.x, bottomHeight, c.z + e.z)
         };
-
-        int invalidCornersCount = 0;
+        
+        int invalidCornersCount = -1;
         foreach (Vector3 corner in bottomCorners)
         {
             if (!Physics.Raycast(p + corner,

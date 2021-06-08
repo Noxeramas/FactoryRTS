@@ -9,12 +9,14 @@ public class Grid
     private int height;
     private int[,] gridArray;
     private float cellSize;
+    private Vector3 originPosition;
     private TextMesh[,] debugTextArray;
-    public Grid(int width, int height, float cellSize)
+    public Grid(int width, int height, float cellSize, Vector3 originPosition)
     {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
+        this.originPosition = originPosition;
 
         gridArray = new int[width, height];
         debugTextArray = new TextMesh[width, height];
@@ -23,14 +25,11 @@ public class Grid
         {
             for(int z = 0; z < gridArray.GetLength(1); z++)
             {
-                debugTextArray[x, z] = UtilsClass.CreateWorldText(gridArray[x,z].ToString(), null, GetWorldPosition(x,0,z) + new Vector3(cellSize,0, cellSize) *.5f,30, Color.white, TextAnchor.MiddleCenter);
-                Debug.DrawLine(GetWorldPosition(x, 0, z), GetWorldPosition(x, 0, z + 1),Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(x, 0, z), GetWorldPosition(x+1, 0, z),Color.white, 100f);
+                
             }
 
         }
-        Debug.DrawLine(GetWorldPosition(0, 0, height), GetWorldPosition(width, 0, height), Color.white, 100f);
-        Debug.DrawLine(GetWorldPosition(width, 0, 0), GetWorldPosition(width, 0, height), Color.white, 100f);
+        
 
      
         
@@ -40,11 +39,11 @@ public class Grid
     private Vector3 GetWorldPosition(int x,int y, int z)
     {
         y = 3;
-        return new Vector3(x, y, z) * cellSize;
+        return new Vector3(x, y, z) * cellSize + originPosition;
     }
     public Vector2 GetXZ(Vector3 worldPosition)
     {
-        return new Vector2(Mathf.FloorToInt(worldPosition.x / cellSize), Mathf.FloorToInt(worldPosition.z / cellSize));
+        return new Vector2(Mathf.FloorToInt((worldPosition - originPosition).x / cellSize), Mathf.FloorToInt((worldPosition- originPosition).z / cellSize));
         
 
     }
@@ -54,7 +53,7 @@ public class Grid
         {
 
             gridArray[x, z] = value;
-            debugTextArray[x, z].text = gridArray[x,z].ToString();
+            //debugTextArray[x, z].text = gridArray[x,z].ToString();
         }
     }   
 }
